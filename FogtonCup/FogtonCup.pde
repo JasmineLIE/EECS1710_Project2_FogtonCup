@@ -33,17 +33,21 @@ void setup() {
     
     
   size(1440, 900, P2D);
+  
+  //establishing audio
   bgMusic = new SoundFile(this, "Audio/Jazz.mp3");
   bgMusic.loop();
   cafeAmbience = new SoundFile(this, "Audio/Ambience.mp3");
-
+  //establishing audio
+  
+  //establishing visual assets
   startScreen = loadImage("Assets/StartGraphic.png");
   aboutPage = loadImage("Assets/AboutMenu.png");
   cafeScreen = loadImage("Assets/CafeGraphic.png");
 
   staticPlay = loadImage("Assets/InitiateButton.png");
   hoveredPlay = loadImage("Assets/InitiateButton_Clicked.png");
-
+  //establishing visual assets
 
   bx = 1000;
   by = 700;
