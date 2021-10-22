@@ -8,9 +8,18 @@ void mousePressed() {  //sets up the play button on the starting screen
     displayAbout = true;
     }
 }
-void keyPressed() { //allows the player to click out of the about page and begin the game
+void keyPressed() { 
+  //allows the player to click out of the about page and begin the game
   if (key == 'x' && gameState == "PLAY" && displayAbout); {
 displayAbout = false;
-  
+
+  //allows the player to click out of the about page and begin the game
+ 
   }
-}
+  if (!displayAbout) {
+//if (key == 'x' && gameState == "PLAY" && beginningTextRun) {
+ 
+} 
+  }
+  
+//}
