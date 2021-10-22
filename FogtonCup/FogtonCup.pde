@@ -8,11 +8,19 @@ import processing.sound.*;
  *
  *
  */
+
+//setting up the play button at the start screen
+
+
+
 String gameState; //this tracks what stage of the game the program is in
+
+
+
 PImage startScreen;
 PImage aboutPage;
 PImage cafeScreen;
-SoundFile bgMusic, cafeAmbience;
+SoundFile bgMusic;
 
 //setting up the play button at the start screen
 PImage staticPlay, hoveredPlay;
@@ -21,23 +29,29 @@ float bx;
 float by;
 int boxSizex = 208;
 int boxSizey = 102;
-
-boolean playButtonClicked = false;
-boolean displayAbout = false;
-
 //setting up the play button at the start screen
 
+//booleans for play button interaction
+boolean playButtonClicked = false;
+boolean displayAbout = false;
+//boolean for play button interaction
+
+//Setting up Beginning Dialogue Boxes//
+
+
 void setup() {
-  
-  gameState = "NOT STARTED";
+
+  gameState = "NOT STARTED"; //the game begins at "NOT STARTED"
     
     
-  size(1440, 900, P2D);
+  size(1440, 900, P2D);  //size of the window to match the assets
   
-  //establishing audio
+
+  
+    //establishing audio
   bgMusic = new SoundFile(this, "Audio/Jazz.mp3");
   bgMusic.loop();
-  cafeAmbience = new SoundFile(this, "Audio/Ambience.mp3");
+
   //establishing audio
   
   //establishing visual assets
@@ -49,25 +63,42 @@ void setup() {
   hoveredPlay = loadImage("Assets/InitiateButton_Clicked.png");
   //establishing visual assets
 
+//establishing button parameters
   bx = 1000;
   by = 700;
   rectMode(RADIUS);
   image(staticPlay, bx, by);
+//establashing button parameters  
+ 
+
 }
 
 void draw() {
-  background(0);
+  background(0); //set background to black
   print (mouseX +"," + mouseY); //print mouse coordinates to the console
   
 
-
+//setting up Game States; the program runs through stages
   if (gameState == "NOT STARTED") {
     notStarted();
   } else if (gameState == "PLAY") {
     playGame();
-  } else if (gameState == "DONE") {
+  } 
+  
+  else if (gameState == "EAKARN") {
+  eakarnStage();  
+  }
+  else if (gameState == "TEMPERANCE") {
+  temperanceStage();  
+  }
+  
+  else if (gameState == "LOGAN") {
+  loganStage();  
+  }
+  else if (gameState == "DONE") {
     gameOver();
   }
+//setting up Game States; the program runs through stages  
 }
 
 
@@ -75,7 +106,7 @@ void draw() {
 
 void notStarted() {
   background(startScreen);  
-  print("The game has not started");  
+  print("The game has not started");  //debug
   image(staticPlay, bx, by);
 
 
@@ -88,19 +119,33 @@ void notStarted() {
 
 
 void playGame() {
-  print("The game has started");  
+  print("The game has started");  //debug
   background(cafeScreen);
-  cafeAmbience.loop();
-  
+
+
+//draws the about page, draws over the background again to get rid of the page when the player presses X
   if (displayAbout) {
    image(aboutPage, 0, 0);
   } else {
     image(cafeScreen, 0, 0);
   }
-  
+//draws the about page, draws over the background again to get rid of the page when the player presses X  
 
 }
 
+
+void eakarnStage() {
+  
+}
+
+void temperanceStage() {
+  
+}
+
+void loganStage() {
+  
+}
+
 void gameOver() {
-  print("The game is over");
+  print("The game is over"); //debug
 }
