@@ -17,22 +17,33 @@ String gameState; //this tracks what stage of the game the program is in
 
 //setting up sound for interaction
 SoundFile interactionClick;
-//
+SoundFile bgMusic;
+SoundFile doorBell, sipNoise;
+SoundFile badDrink, okDrink, greatDrink;
+//setting up sound for interaction
 
 PImage startScreen;
 PImage aboutPage;
 PImage cafeScreen;
 PImage drinkMenu;
 PImage gameOverScreen;
-SoundFile bgMusic;
+PImage coffeeCup;
 
-//calling Dialogue Classes
+
+
+//calling Dialogue Class
 
 Dialogue introGo;
-Dialogue e1;
+
+//calling Dialogue Class
+
+//setting up Ball class//
+
+ArrayList<Ball> balls;
+
+//setting up Ball class//
 
 
-//calling Dialogue Classes
 //setting up the play button at the start screen
 PImage staticPlay, hoveredPlay;
 
@@ -60,13 +71,25 @@ void setup() {
     
   size(1440, 900, P2D);  //size of the window to match the assets
   
+//setting up items for drink minigame
 
+  balls = new ArrayList<Ball>();
+  coffeeCup = loadImage("CupMash.png");
+    balls.add(new Ball(width/2, 0, ballWidth));
+    
+//setting up items for drink minigame
   
     //establishing audio
   bgMusic = new SoundFile(this, "Audio/Jazz.mp3");
   bgMusic.loop();
 
+doorBell = new SoundFile(this, "Audio/SFX/DoorBell.wav");
 interactionClick = new SoundFile(this, "Audio/SFX/PageClick.wav");
+sipNoise = new SoundFile(this, "Audio/SFX/SipNoise.wav");
+badDrink = new SoundFile(this, "Audio/SFX/BadDrink.wav");
+okDrink = new SoundFile(this, "Audio/SFX/OkDrink.wav");
+greatDrink = new SoundFile(this, "Audio/SFX/GreatDrink.wav");
+
 eakarnHum1 = new SoundFile(this, "Audio/Eakarn/Eakarn_Hum1.mp3");
 eakarnHum2 = new SoundFile(this, "Audio/Eakarn/Eakarn_Hum2.mp3");
 eakarnHum3 = new SoundFile(this, "Audio/Eakarn/Eakarn_Hum3.mp3");
@@ -81,6 +104,17 @@ gameOverScreen = loadImage("Assets/CharacterDialogue/Eakarn/EakarnLeaves.png");
 drinkMenu = loadImage("Assets/DrinkMenu.png");
   staticPlay = loadImage("Assets/InitiateButton.png");
   hoveredPlay = loadImage("Assets/InitiateButton_Clicked.png");
+  
+  eakarnDispleased = loadImage("Assets/CharacterDialogue/Eakarn/EakarnDispleased.png");
+  eakarnSatisfied = loadImage("Assets/CharacterDialogue/Eakarn/EakarnSatisfied.png");
+  eakarnPleased = loadImage("Assets/CharacterDialogue/Eakarn/EakarnPleased.png");
+  
+  matchaFratchaChosen = loadImage("Assets/MatchaFratchaConfirm.png");
+  darkStripesChosen = loadImage("Assets/DarkStripesConfirm.png");
+  mochaVinciChosen = loadImage("Assets/MochaVinciConfirm.png");
+  paleCloudChosen = loadImage("Assets/PaleCloudConfirm.png");
+  crackingColdChosen = loadImage("Assets/PaleCloudConfirm.png");
+  
   //establishing visual assets
 
 
@@ -109,6 +143,10 @@ void draw() {
   else if (gameState == "DRINK SELECTION") {
   drinkStage();  
   } 
+  
+  else if (gameState == "DRINK MINIGAME") {
+    drinkMinigame();
+  }
   
   else if (gameState == "DRINK SERVE") {
     serveDrink();
@@ -148,21 +186,48 @@ void playGame() {
  if (!displayAbout) {
      print("About is closed");
 
-     introGo.introDisplay();{
-     }
- }
+     introGo.introDisplay();
+     
+ 
+}
 }
        
 void drinkStage() {
   print("Drink stage in play");
    background(cafeScreen);
-   image(drinkMenu, 0, 0);
-imageMode(CENTER);
+  
+image(drinkMenu, 720, 450);
+ 
  }
+void drinkMinigame() {
+   print("Drink Minigame stage in play");
+   background(cafeScreen); 
    
+        for (int i = balls.size()-1; i >= 0; i--) { 
+    // An ArrayList doesn't know what it is storing so we have to cast the object coming out
+    Ball ball = balls.get(i);
+    ball.move();
+    ball.display();
+    if (ball.finished()) {
+      // Items can be deleted with remove()
+      balls.remove(i);
+      
+    
+  
+}
+     }
+     
+      image(coffeeCup, 0, 0);
+      textAlign(LEFT);
+      textSize(30);
+      text("Love Accoumulated:  " + loveCount, 100, 100);
+}
 
 void serveDrink() {
-  
+   print("Serve Drink Stage in play");
+   background(cafeScreen);
+     introGo.introDisplay();
+
 }
 
 
