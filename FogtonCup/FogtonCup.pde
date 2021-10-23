@@ -52,7 +52,7 @@ boolean displayAbout = false;
 void setup() {
   
   introGo = new Dialogue();
-  e1 = new Dialogue();
+
 
   gameState = "NOT STARTED"; //the game begins at "NOT STARTED"
     
@@ -102,13 +102,8 @@ void draw() {
   else if (gameState == "EAKARN") {
   eakarnStage();  
   }
-  else if (gameState == "TEMPERANCE") {
-  temperanceStage();  
-  }
+ 
   
-  else if (gameState == "LOGAN") {
-  loganStage();  
-  }
   else if (gameState == "DONE") {
     gameOver();
   }
@@ -145,14 +140,17 @@ void playGame() {
      print("About is closed");
 
      introGo.introDisplay();{
+     }
+ }
+}
        
 void eakarnStage() {
   print("Eakarn stage in play");
    background(cafeScreen);
- e1.eakarnIntroDisplay();  
+
  }
    
-}
+
 
 void temperanceStage() {
   
