@@ -2,11 +2,12 @@ import processing.sound.*;
 
 /*
 *FogtonCup is a one button game that requires the player to read the dialogue of characters to make guesses on what drink they would like.  Each character has a liking, neutral feeling, or disliking to all the drinks available.
+*Afterwards, the player is required to put their heart into the drink!  When prompted, pressing the X key puts 'love' into a drink, at the end love is calculated and shown to the palyer
  *Resource on writing Game States: https://www.youtube.com/watch?v=q8rP6R0LCss&ab_channel=JohnMcCaffrey
  *Resource on making buttons: https://processing.org/examples/button.html
  *All art assets were made by me.
- *
- *
+ *Jazz Music: https://www.youtube.com/watch?v=gv7hcXCnjOw&ab_channel=LuKremBo
+ *Character(s) is mentioned because multiple assets and character art was created to accomodate for two more characters, but due to time limits and constraints I settled on just having Eakarn be the focus of the program.
  */
 
 //setting up the play button at the start screen
@@ -113,7 +114,7 @@ drinkMenu = loadImage("Assets/DrinkMenu.png");
   darkStripesChosen = loadImage("Assets/DarkStripesConfirm.png");
   mochaVinciChosen = loadImage("Assets/MochaVinciConfirm.png");
   paleCloudChosen = loadImage("Assets/PaleCloudConfirm.png");
-  crackingColdChosen = loadImage("Assets/PaleCloudConfirm.png");
+  crackingColdChosen = loadImage("Assets/crackingColdChosen.png");
   
   drinkDoneConfirm = loadImage("Assets/DrinkDoneConfirm.png");
   
@@ -195,11 +196,12 @@ void playGame() {
 }
        
 void drinkStage() {
-  print("Drink stage in play");
+  print("Drink stage in play"); //debug
    background(0);
   
   image(drinkMenu, 720, 450);
   
+  //visual dialogue that appears based on what drink was chosen
    if (matchaFratchaClicked) {
 
  image(matchaFratchaChosen,720, 450);
@@ -226,11 +228,11 @@ void drinkStage() {
  image(crackingColdChosen, 720, 450);
 
    }
-   
+     //visual dialogue that appears based on what drink was chosen
  }
 
 void drinkMinigame() {
-   print("Drink Minigame stage in play");
+   print("Drink Minigame stage in play"); //debug
    background(cafeScreen); 
    
 
@@ -262,7 +264,7 @@ void drinkMinigame() {
 
 
 void serveDrink() {
-   print("Serve Drink Stage in play");
+   print("Serve Drink Stage in play"); //debug
    background(cafeScreen);
 
 
