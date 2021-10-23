@@ -1,4 +1,7 @@
 //ArrayList and ball idea: https://processing.org/examples/arraylistclass.html
+PImage drinkDoneConfirm;
+boolean ballGameDone = false;
+
 int ballWidth = 40;
 int ballTimer = 25;
 int loveCount;
