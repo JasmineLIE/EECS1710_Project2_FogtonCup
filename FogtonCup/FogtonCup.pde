@@ -23,6 +23,7 @@ PImage startScreen;
 PImage aboutPage;
 PImage cafeScreen;
 PImage drinkMenu;
+PImage gameOverScreen;
 SoundFile bgMusic;
 
 //calling Dialogue Classes
@@ -66,16 +67,22 @@ void setup() {
   bgMusic.loop();
 
 interactionClick = new SoundFile(this, "Audio/SFX/PageClick.wav");
+eakarnHum1 = new SoundFile(this, "Audio/Eakarn/Eakarn_Hum1.mp3");
+eakarnHum2 = new SoundFile(this, "Audio/Eakarn/Eakarn_Hum2.mp3");
+eakarnHum3 = new SoundFile(this, "Audio/Eakarn/Eakarn_Hum3.mp3");
   //establishing audio
+  
   
   //establishing visual assets
   startScreen = loadImage("Assets/StartGraphic.png");
   aboutPage = loadImage("Assets/AboutMenu.png");
   cafeScreen = loadImage("Assets/CafeGraphic.png");
-
+gameOverScreen = loadImage("Assets/CharacterDialogue/Eakarn/EakarnLeaves.png");
+drinkMenu = loadImage("Assets/DrinkMenu.png");
   staticPlay = loadImage("Assets/InitiateButton.png");
   hoveredPlay = loadImage("Assets/InitiateButton_Clicked.png");
   //establishing visual assets
+
 
 //establishing button parameters
   bx = 1000;
@@ -99,11 +106,13 @@ void draw() {
     playGame();
   } 
   
-  else if (gameState == "EAKARN") {
-  eakarnStage();  
-  }
- 
+  else if (gameState == "DRINK SELECTION") {
+  drinkStage();  
+  } 
   
+  else if (gameState == "DRINK SERVE") {
+    serveDrink();
+  }
   else if (gameState == "DONE") {
     gameOver();
   }
@@ -144,22 +153,21 @@ void playGame() {
  }
 }
        
-void eakarnStage() {
-  print("Eakarn stage in play");
+void drinkStage() {
+  print("Drink stage in play");
    background(cafeScreen);
-
+   image(drinkMenu, 0, 0);
+imageMode(CENTER);
  }
    
 
-
-void temperanceStage() {
+void serveDrink() {
   
 }
 
-void loganStage() {
-  
-}
 
 void gameOver() {
   print("The game is over"); //debug
+   background(cafeScreen);
+   image(gameOverScreen, 0, 0);
 }
