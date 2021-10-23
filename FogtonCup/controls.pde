@@ -21,14 +21,41 @@ displayAbout = false;
   }
  
 if (key == 'x' && gameState == "PLAY" && !displayAbout) {
+
 introCounter++;
 interactionClick.play();
 
-if (introCounter > intro.length-1) {
-  gameState = "EAKARN";
+//play Eakarn's voice lines on certain dialogue
+switch(introCounter) {
+  case 6:
+  eakarnHum3.play();
+  break;
+  case 8:
+  eakarnHum1.play();
+  break;
+  case 9:
+  eakarnHum2.play();
+  break;
+}
+//play Eakarn's voice lines on certain dialogue
+
+if (introCounter > 11) {
+  gameState = "DRINK SELECTION";
 
 
 
 }
 }
+if (key == 'x' && gameState == "DRINK SERVE") {
+  switch (eakarnPoints) {
+  case 1:
+  break;
+  case 2:
+  break;
+  case 3:
+  break;
+  }
+  gameState = "DONE";
+}
+
 }
