@@ -74,7 +74,7 @@ void setup() {
 //setting up items for drink minigame
 
   balls = new ArrayList<Ball>();
-  coffeeCup = loadImage("CupMash.png");
+  coffeeCup = loadImage("Assets/CupMash.png");
     balls.add(new Ball(width/2, 0, ballWidth));
     
 //setting up items for drink minigame
@@ -114,6 +114,8 @@ drinkMenu = loadImage("Assets/DrinkMenu.png");
   mochaVinciChosen = loadImage("Assets/MochaVinciConfirm.png");
   paleCloudChosen = loadImage("Assets/PaleCloudConfirm.png");
   crackingColdChosen = loadImage("Assets/PaleCloudConfirm.png");
+  
+  drinkDoneConfirm = loadImage("Assets/DrinkDoneConfirm.png");
   
   //establishing visual assets
 
@@ -194,14 +196,45 @@ void playGame() {
        
 void drinkStage() {
   print("Drink stage in play");
-   background(cafeScreen);
+   background(0);
   
-image(drinkMenu, 720, 450);
+  image(drinkMenu, 720, 450);
+  
+   if (matchaFratchaClicked) {
+
+ image(matchaFratchaChosen,720, 450);
+ 
+
+   } else if (darkStripesClicked) {
+  
+   image(darkStripesChosen,720, 45);
+
+ 
+ } else if (mochaVinciClicked) {
+   
+ image(mochaVinciChosen, 720, 450);
+
  
  }
+ else if (paleCloudClicked) {
+   
+ image(paleCloudChosen, 720, 450);
+
+ 
+ }
+ else if (crackingColdClicked) {
+ image(crackingColdChosen, 720, 450);
+
+   }
+   
+ }
+
 void drinkMinigame() {
    print("Drink Minigame stage in play");
    background(cafeScreen); 
+   
+
+
    
         for (int i = balls.size()-1; i >= 0; i--) { 
     // An ArrayList doesn't know what it is storing so we have to cast the object coming out
@@ -217,22 +250,49 @@ void drinkMinigame() {
 }
      }
      
-      image(coffeeCup, 0, 0);
-      textAlign(LEFT);
-      textSize(30);
-      text("Love Accoumulated:  " + loveCount, 100, 100);
+
+      image(coffeeCup, 720, 450);
+     
+     
+      
+     if (ballTimer == 2) {
+       image(drinkDoneConfirm, 720, 450);
+     }
 }
+
 
 void serveDrink() {
    print("Serve Drink Stage in play");
    background(cafeScreen);
-     introGo.introDisplay();
 
+
+  switch (eakarnPoints) {
+  case 1: //Eakarn is displeased
+  image(eakarnDispleased,720, 450);
+
+  eakarnDoneDrink = true;
+  break;
+  case 2: //Eakarn is satisfied
+  image(eakarnSatisfied, 720, 450);
+
+    eakarnDoneDrink = true;
+  break;
+  case 3: //Eakarn is pleased
+  image(eakarnPleased, 720, 450);
+
+    eakarnDoneDrink = true;
+  break;
+  }
+  
+   
 }
 
 
 void gameOver() {
   print("The game is over"); //debug
    background(cafeScreen);
-   image(gameOverScreen, 0, 0);
+   image(gameOverScreen, 720, 450);
+    textSize(30);
+    fill(250);
+      text("Love Accoumulated:  " + loveCount, 100, 100) ;
 }
