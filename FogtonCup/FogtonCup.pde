@@ -207,7 +207,7 @@ void drinkStage() {
 
    } else if (darkStripesClicked) {
   
-   image(darkStripesChosen,720, 45);
+   image(darkStripesChosen,720, 450);
 
  
  } else if (mochaVinciClicked) {
@@ -255,7 +255,7 @@ void drinkMinigame() {
      
      
       
-     if (ballTimer == 2) {
+     if (ballTimer == 1) {
        image(drinkDoneConfirm, 720, 450);
      }
 }
@@ -293,6 +293,6 @@ void gameOver() {
    background(cafeScreen);
    image(gameOverScreen, 720, 450);
     textSize(30);
-    fill(250);
+    fill(0);
       text("Love Accoumulated:  " + loveCount, 100, 100) ;
 }
