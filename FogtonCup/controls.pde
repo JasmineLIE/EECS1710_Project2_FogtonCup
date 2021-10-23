@@ -20,7 +20,7 @@ displayAbout = false;
  
   }
  
-if (key == 'x' && gameState == "PLAY" && !displayAbout) {
+if (key == 'x' && gameState == "PLAY" && !displayAbout) { //begins dialogue once the about page has been closed
 
 introCounter++;
 interactionClick.play();
@@ -42,14 +42,14 @@ switch(introCounter) {
   case 12:
   gameState = "DRINK SELECTION";
 }
-//play Eakarn's voice lines on certain dialogue
+
 
 
 
 
 }
 
-
+//players can press a key button when presented with the menu
 
    
   if (key == '1' && gameState == "DRINK SELECTION" && !eakarnChoseDrink) { //Matcha-Fratcha selected
@@ -115,16 +115,18 @@ paleCloudClicked = false;
 crackingColdClicked = true;
 
 eakarnChoseDrink = true;
+
+
 }
 
 
-if (key == 'x' && eakarnChoseDrink) {
+if (key == 'x' && eakarnChoseDrink) {//once the dialogue box associated with the drink appears, when the players close out of it by pressing x they start the dirnk minigame
   gameState = "DRINK MINIGAME";
 }
 
 
 
-if (key == 'x' && gameState == "DRINK MINIGAME") {
+if (key == 'x' && gameState == "DRINK MINIGAME") { //by pressing X, players put love into the coffee.  How much they can click within 25 seconds is measured
     if (ballTimer > 0) {
   if (key == 'x') {
    balls.add(new Ball(random(469, 906), 0, ballWidth));
@@ -138,7 +140,7 @@ if (key == 'x' && gameState == "DRINK MINIGAME") {
  
 
 
-if (key == 'x' && ballTimer == 0) {
+if (key == 'x' && ballTimer == 0) { //set sound bytes for the success measure of the drink served
   gameState = "DRINK SERVE";
   
  if (gameState == "DRINK SERVE") {
