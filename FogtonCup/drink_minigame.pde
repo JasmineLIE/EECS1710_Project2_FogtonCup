@@ -1,5 +1,7 @@
 //ArrayList and ball idea: https://processing.org/examples/arraylistclass.html
-
+int ballWidth = 40;
+int ballTimer = 25;
+int loveCount;
 class Ball {
   float x;
   float y;
@@ -39,8 +41,10 @@ boolean finished() {
 }
 
 void display() {
+
  fill(#FF9DB6, life); 
  ellipse(x, y, w,w);
  noStroke();
+
 }
 }
