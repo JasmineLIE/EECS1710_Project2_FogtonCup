@@ -39,70 +39,127 @@ switch(introCounter) {
   case 9:
   eakarnHum2.play();
   break;
+  case 12:
+  gameState = "DRINK SELECTION";
 }
 //play Eakarn's voice lines on certain dialogue
 
-if (introCounter > 11) {
-  gameState = "DRINK SELECTION";
 
 
 
 }
-if (key == '1' && gameState == "DRINK SELECTION") { //Matcha-Fratcha selected
+
+
+
+   
+  if (key == '1' && gameState == "DRINK SELECTION" && !eakarnChoseDrink) { //Matcha-Fratcha selected
+print("1 chosen");
 eakarnPoints = matchaFratcha;
 
-eakarnDrinkChosen = true;  
+matchaFratchaClicked = true;
+darkStripesClicked = false;
+mochaVinciClicked = false;
+paleCloudClicked = false;
+ crackingColdClicked = false;
+ 
+eakarnChoseDrink = true;
 
-} else if (key == '2' && gameState == "DRINK SELECTION") { //Dark Stripes selected
+
+} else if (key == '2'&& gameState == "DRINK SELECTION" && !eakarnChoseDrink) { //Dark Stripes selected
+print("2 chosen");
 eakarnPoints = darkStripes;
-eakarnDrinkChosen = true;  
 
-} else if (key == '3' && gameState == "DRINK SELECTION") { //Mocha Vinci selected
+darkStripesClicked = true;
+matchaFratchaClicked = false;
+mochaVinciClicked = false;
+paleCloudClicked = false;
+ crackingColdClicked = false;
+ 
+eakarnChoseDrink = true;
+
+
+} else if (key == '3' && gameState == "DRINK SELECTION" && !eakarnChoseDrink) { //Mocha Vinci selected
+print("3 chosen");
 eakarnPoints = mochaVinci;
-eakarnDrinkChosen = true;    
 
-} else if (key == '4' && gameState == "DRINK SELECTION") { //Pale Cloud selected
+matchaFratchaClicked = false;
+mochaVinciClicked= true;
+darkStripesClicked = false;
+paleCloudClicked = false;
+crackingColdClicked = false;
+ 
+eakarnChoseDrink = true;
+
+
+} else if (key == '4'  && gameState == "DRINK SELECTION" && !eakarnChoseDrink) { //Pale Cloud selected
+print("4 chosen");
 eakarnPoints = paleCloud;
-eakarnDrinkChosen = true;   
 
-} else if (key == '5' && gameState == "DRINK SELECTION") { //Cracking Cold selected
+paleCloudClicked = true;
+matchaFratchaClicked = false;
+darkStripesClicked = false;
+mochaVinciClicked = false;
+crackingColdClicked = false;
+
+eakarnChoseDrink = true;
+
+
+} else if (key == '5' && gameState == "DRINK SELECTION" && !eakarnChoseDrink) { //Cracking Cold selected
+print("5 chosen");
 eakarnPoints = crackingCold;
-eakarnDrinkChosen = true;    
+
+matchaFratchaClicked = false;
+darkStripesClicked = false;
+mochaVinciClicked = false;
+paleCloudClicked = false;
+crackingColdClicked = true;
+
+eakarnChoseDrink = true;
 }
+
+
+if (key == 'x' && eakarnChoseDrink) {
+  gameState = "DRINK MINIGAME";
 }
-if (key == 'x' && gameState == "DRINK SERVE" && ballTimer == 0) {
+
+
+
+if (key == 'x' && gameState == "DRINK MINIGAME") {
+    if (ballTimer > 0) {
+  if (key == 'x') {
+   balls.add(new Ball(random(469, 906), 0, ballWidth));
+   loveCount++;
+  }
+  ballTimer--;
+  } 
   
-  introCounter++;
-  interactionClick.play();
- switch (introCounter) {
-   case 12:
-   sipNoise.play();
-   break;
- }
-  if (introCounter > 13); {
-  switch (eakarnPoints) {
-  case 1: //Eakarn is displeased
-  image(eakarnDispleased, 0, 0);
+ 
+  }
+ 
+
+
+if (key == 'x' && ballTimer == 0) {
+  gameState = "DRINK SERVE";
+  
+ if (gameState == "DRINK SERVE") {
+ switch (eakarnPoints) {
+  case 1:
   badDrink.play();
-  eakarnDoneDrink = true;
   break;
-  case 2: //Eakarn is satisfied
-  image(eakarnSatisfied, 0, 0);
-  okDrink.play();
-    eakarnDoneDrink = true;
+  case 2:
+    okDrink.play();
   break;
-  case 3: //Eakarn is pleased
-  image(eakarnPleased, 0, 0);
-  greatDrink.play();
-    eakarnDoneDrink = true;
+  case 3:
+    greatDrink.play();
   break;
   }
-  }
+ }
 
 }
 
    if (key =='x' && eakarnDoneDrink) {
    gameState = "DONE";
    }
+
 
 }
