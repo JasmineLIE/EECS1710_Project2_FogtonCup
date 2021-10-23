@@ -296,5 +296,5 @@ void gameOver() {
    image(gameOverScreen, 720, 450);
     textSize(30);
     fill(0);
-      text("Love Accoumulated:  " + loveCount, 100, 100) ;
+      text("Love Accoumulated:  " + loveCount, 1100, 100) ;
 }
