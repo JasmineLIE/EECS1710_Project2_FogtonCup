@@ -15,13 +15,23 @@ import processing.sound.*;
 
 String gameState; //this tracks what stage of the game the program is in
 
-
+//setting up sound for interaction
+SoundFile interactionClick;
+//
 
 PImage startScreen;
 PImage aboutPage;
 PImage cafeScreen;
+PImage drinkMenu;
 SoundFile bgMusic;
 
+//calling Dialogue Classes
+
+Dialogue introGo;
+Dialogue e1;
+
+
+//calling Dialogue Classes
 //setting up the play button at the start screen
 PImage staticPlay, hoveredPlay;
 
@@ -40,6 +50,9 @@ boolean displayAbout = false;
 
 
 void setup() {
+  
+  introGo = new Dialogue();
+  e1 = new Dialogue();
 
   gameState = "NOT STARTED"; //the game begins at "NOT STARTED"
     
@@ -52,6 +65,7 @@ void setup() {
   bgMusic = new SoundFile(this, "Audio/Jazz.mp3");
   bgMusic.loop();
 
+interactionClick = new SoundFile(this, "Audio/SFX/PageClick.wav");
   //establishing audio
   
   //establishing visual assets
@@ -125,17 +139,19 @@ void playGame() {
 
 //draws the about page, draws over the background again to get rid of the page when the player presses X
   if (displayAbout) {
-   image(aboutPage, 0, 0);
-  } else {
-    image(cafeScreen, 0, 0);
-  }
+   image(aboutPage, 0, 0); }
 //draws the about page, draws over the background again to get rid of the page when the player presses X  
+ if (!displayAbout) {
+     print("About is closed");
 
-}
-
-
+     introGo.introDisplay();{
+       
 void eakarnStage() {
-  
+  print("Eakarn stage in play");
+   background(cafeScreen);
+ e1.eakarnIntroDisplay();  
+ }
+   
 }
 
 void temperanceStage() {
