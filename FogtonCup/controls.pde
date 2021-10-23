@@ -1,3 +1,4 @@
+
 void mousePressed() {  //sets up the play button on the starting screen
   if (mouseX > bx-boxSizex && mouseX < bx+boxSizex && 
     mouseY > by-boxSizey && mouseY < by+boxSizey && gameState == "NOT STARTED") {
@@ -11,15 +12,23 @@ void mousePressed() {  //sets up the play button on the starting screen
 void keyPressed() { 
   //allows the player to click out of the about page and begin the game
   if (key == 'x' && gameState == "PLAY" && displayAbout); {
-displayAbout = false;
 
+displayAbout = false;
   //allows the player to click out of the about page and begin the game
  
   }
-  if (!displayAbout) {
-//if (key == 'x' && gameState == "PLAY" && beginningTextRun) {
  
+if (key == 'x' && gameState == "PLAY" && !displayAbout) {
+introCounter++;
+interactionClick.play();
+
+if (introCounter > intro.length-1) {
+  gameState = "EAKARN";
+eakarnPhase1 = true;
 } 
   }
-  
-//}
+  if (key == 'x' && gameState == "EAKARN" && eakarnPhase1) {
+    eakarnIntroCounter++;
+  interactionClick.play();
+  }
+}
