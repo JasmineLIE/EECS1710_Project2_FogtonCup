@@ -1,3 +1,5 @@
+//stores initialization and declaration of all things drink related
+
 PImage eakarnDispleased, eakarnPleased, eakarnSatisfied;
 PImage matchaFratchaChosen, darkStripesChosen, mochaVinciChosen, paleCloudChosen, crackingColdChosen;
 
@@ -22,10 +24,3 @@ int eakarnPoints; //whatever is chosen gets sent to Eakarn points
 
 
 boolean eakarnDoneDrink = false;
-
-class Drinks {
-
-Drinks () {
-  
-}
-}
