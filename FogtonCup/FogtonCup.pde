@@ -254,8 +254,10 @@ void drinkMinigame() {
      
 
       image(coffeeCup, 720, 450);
-     
-     
+      
+     textSize(30);
+     fill(0);
+     text("Love Left: " + ballTimer, 100, 100);
       
      if (ballTimer == 1) {
        image(drinkDoneConfirm, 720, 450);
@@ -294,7 +296,6 @@ void gameOver() {
   print("The game is over"); //debug
    background(cafeScreen);
    image(gameOverScreen, 720, 450);
-    textSize(30);
-    fill(250);
-      text("Love Accoumulated:  " + loveCount, 900, 100) ;
+    
+    
 }
