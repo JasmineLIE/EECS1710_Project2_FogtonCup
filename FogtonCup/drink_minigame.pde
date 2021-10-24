@@ -3,7 +3,7 @@ PImage drinkDoneConfirm;
 boolean ballGameDone = false;
 
 int ballWidth = 40;
-int ballTimer = 25;
+int ballTimer = 40;
 int loveCount;
 class Ball {
   float x;
