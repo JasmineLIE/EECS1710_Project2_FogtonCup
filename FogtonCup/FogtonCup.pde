@@ -114,7 +114,7 @@ drinkMenu = loadImage("Assets/DrinkMenu.png");
   darkStripesChosen = loadImage("Assets/DarkStripesConfirm.png");
   mochaVinciChosen = loadImage("Assets/MochaVinciConfirm.png");
   paleCloudChosen = loadImage("Assets/PaleCloudConfirm.png");
-  crackingColdChosen = loadImage("Assets/crackingColdChosen.png");
+  crackingColdChosen = loadImage("Assets/CrackingColdConfirm.png");
   
   drinkDoneConfirm = loadImage("Assets/DrinkDoneConfirm.png");
   
@@ -295,6 +295,6 @@ void gameOver() {
    background(cafeScreen);
    image(gameOverScreen, 720, 450);
     textSize(30);
-    fill(0);
-      text("Love Accoumulated:  " + loveCount, 1100, 100) ;
+    fill(250);
+      text("Love Accoumulated:  " + loveCount, 900, 100) ;
 }
